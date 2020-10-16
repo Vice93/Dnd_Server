@@ -11,7 +11,12 @@ module.exports = (router) => {
   })
 
   router.get('/roll', (req, res) => {
+
     res.status(200).send('mordi rolla 5 dicks i ræva')
+  })
+
+  router.get('/nic', (req ,res) => {
+    res.send('hva vil du nic, jeg knuller mordi med 5 pikk per rævhul')
   })
 
   //require('somefile')(router)
