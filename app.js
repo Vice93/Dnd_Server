@@ -20,6 +20,10 @@ app.use(logger(process.env.NODE_ENV))
  */
 const router = express.Router()
 //const usersApi = require('./api/users.js')(router)
+app.use('/', (req, res) => {
+  res.send('hello world')
+})
+
 //app.use('/api', usersApi)
 /**
  * Finally we tell the app to listen to all traffic on the specified port
