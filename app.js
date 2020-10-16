@@ -14,18 +14,12 @@ const app = express()
 */
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(logger(process.env.NODE_ENV))
+console.log(process.env.NODE_ENV) // production??
+app.use(logger(process.env.NODE_ENV || 'dev'))
 /**
- * Next we need to define our routes. These are our api end-points where we listen to requests from react
+ * Setup API routes
  */
-const router = express.Router()
-//const usersApi = require('./api/users.js')(router)
-
-router.get('/', (req, res) => {
-  res.send('hello world');
-})
-
-app.use('/', router)
+app.use('/v1', require('./api/v1')(express.Router()))
 
 //app.use('/api', usersApi)
 /**

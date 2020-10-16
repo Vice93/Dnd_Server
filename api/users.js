@@ -5,7 +5,7 @@ const middleware = require('./middleware.js')
 
 module.exports = (router) => {
 
-  router.post('/register', (req, res) => {
+  router.post('/user/register', (req, res) => {
     try {
       let body = req.body
       if (body.username === '' || body.email === '' || body.password === '') {
@@ -23,7 +23,7 @@ module.exports = (router) => {
     }
   })
 
-  router.post('/login', (req, res) => {
+  router.post('/user/login', (req, res) => {
     try{
       let body = req.body
       
@@ -40,7 +40,7 @@ module.exports = (router) => {
     }
   })
 
-  router.get('/me', middleware.verifyToken, (req, res) => {
+  router.get('/user/me', middleware.verifyToken, (req, res) => {
     let username = req.decoded.username
     
     mysql('users').where('Username', username).first().then((user) => new User(user)).then((user) => {
