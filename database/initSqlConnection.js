@@ -20,9 +20,9 @@ const query = (q) => {
       return client
         .query(q)
         .then((res) => {
-          console.log("returning", res)
+          console.log("returning", res.rows)
           client.release()
-          return res
+          return res.rows
         }).catch(err => {
           client.release()
           console.log("Error:", err)
