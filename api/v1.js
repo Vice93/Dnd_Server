@@ -10,6 +10,10 @@ module.exports = (router) => {
     })
   })
 
+  router.get('/roll', (req, res) => {
+    res.status(200).send('mordi rolla 5 dicks i ræva')
+  })
+
   //require('somefile')(router)
 
   return router
