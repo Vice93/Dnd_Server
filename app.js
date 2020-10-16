@@ -31,4 +31,4 @@ app.use('/', router)
 /**
  * Finally we tell the app to listen to all traffic on the specified port
  */
-app.listen(process.env.NODE_PORT, () => console.log(`Listening on port ${process.env.NODE_PORT}`))
+app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}`))
