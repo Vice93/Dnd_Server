@@ -20,11 +20,12 @@ const query = (q) => {
       return client
         .query(q)
         .then((res) => {
+          console.log("returning", res)
           client.release()
           return res
         }).catch(err => {
           client.release()
-          console.log(err)
+          console.log("Error:", err)
           return undefined
         })
     })
