@@ -21,11 +21,11 @@ app.use(logger(process.env.NODE_ENV))
 const router = express.Router()
 //const usersApi = require('./api/users.js')(router)
 
-const testroute = router.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send('hello world');
 })
 
-app.use('/', testroute)
+app.use('/', router)
 
 //app.use('/api', usersApi)
 /**
