@@ -14,7 +14,7 @@ pool.on('error', (err, client) => {
 })
 
 const query = (q) => {
-  pool
+  return pool
     .connect()
     .then(client => {
       return client
