@@ -1,4 +1,4 @@
-const mysql = require('./initPool.js')
+const db = require('./initPool.js')
 const LINQ = require('node-linq').LINQ
 const bcrypt = require('bcrypt')
 const User = require('../model/User.js')
@@ -20,7 +20,7 @@ const comparePassword = (password, hash, callback) => {
 }
 
 const login = (username, password, callback) => {
-  mysql('users')
+  db('Users')
     .select()
     .where('Username', username)
     .then((rows) => {
@@ -43,14 +43,14 @@ const login = (username, password, callback) => {
 
 
 const registerUser = (username, email, password, callback) => {
-  mysql('users')
+  db('Users')
     .select()
     .where('Username', username)
     .orWhere('Email', email)
     .then((rows) => {
       if (rows.length === 0)
         encryptPassword(password, (hashedPw) => {
-          mysql('users')
+          db('Users')
           .insert({
             Username: username,
             Email: email,

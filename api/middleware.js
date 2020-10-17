@@ -1,4 +1,4 @@
-const secret = require('../appenv').secret
+const secret = process.env.ROLLHUB_SECRET
 const jwt = require('jsonwebtoken')
 
 const generateToken = (username) => {
@@ -10,10 +10,10 @@ const generateToken = (username) => {
 const verifyToken = (req, res, next) => {
   let token = req.header('Authorization')
 
-  if(token.startsWith('Bearer '))
+  if(token && token.startsWith('Bearer '))
     token = token.slice(7, token.length)
 
-  if(token == null || token === '') {
+  if(!token || token === '') {
     res.status(401)
     return res.json({success: false, message: 'Token can not be null or empty.'})
   } 

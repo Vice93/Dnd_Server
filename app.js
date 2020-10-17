@@ -1,12 +1,23 @@
 /* Imports */
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
-
+const appEnv = process.env.APP_ENV || 'dev'
 /**
 * Initialize the application using express 
 */
 const app = express()
+
+/**
+ * Enable cors if the environment is development
+ */
+if (appEnv === 'dev') {
+  console.log(`Enabled cors because environment is ${appEnv}`)
+  app.use(cors({
+    origin: [`http://localhost:3002`] //your react url:port
+  }))
+}
 
 /** 
 * Use bodyparser to parse the requests/responses we send. We are mostly using json, but some formdata is sent as urlencoded so we support both these. 
@@ -14,14 +25,14 @@ const app = express()
 */
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-console.log(process.env.APP_ENV) // production??
-app.use(logger(process.env.APP_ENV || 'dev'))
+
+app.use(logger(appEnv))
 /**
  * Setup API routes
  */
 app.use('/v1', require('./api/v1')(express.Router()))
 
-//app.use('/api', usersApi)
+
 /**
  * Finally we tell the app to listen to all traffic on the specified port
  */

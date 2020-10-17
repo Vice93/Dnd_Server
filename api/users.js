@@ -1,4 +1,4 @@
-const mysql = require('../database/initPool.js')
+const db = require('../database/initPool.js')
 const User = require('../model/User.js')
 const lib = require('../database/lib.js')
 const middleware = require('./middleware.js')
@@ -43,7 +43,7 @@ module.exports = (router) => {
   router.get('/user/me', middleware.verifyToken, (req, res) => {
     let username = req.decoded.username
     
-    mysql('users').where('Username', username).first().then((user) => new User(user)).then((user) => {
+    db('Users').where('Username', username).first().then((user) => new User(user)).then((user) => {
       if (user == null)  {
         res.status(401)
         return res.json({ success: false, message: 'Unauthorized - Invalid username.', data: { user: null } })
