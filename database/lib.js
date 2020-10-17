@@ -42,13 +42,11 @@ const login = (username, password, callback) => {
 }
 
 const trystuff = (userobj) => {
+  console.log(userobj)
   try {
-    try {
-      return new User(JSON.stringify(userobj))
-    } catch (error) {
-      return new User(userobj)
-    }
+    return new User(userobj)
   } catch (e) {
+    console.log(e)
     return userobj
   }
 }

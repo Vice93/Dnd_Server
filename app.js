@@ -3,7 +3,6 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
-const appEnv = process.env.APP_ENV || 'dev'
 /**
 * Initialize the application using express 
 */
