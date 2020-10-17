@@ -12,6 +12,7 @@ const app = express()
 /**
  * Enable cors if the environment is development
  */
+console.log(`Allow cors origin: ${process.env.REACT_URL}`)
 app.use(cors({
   origin: [process.env.REACT_URL]
 }))
