@@ -6,8 +6,8 @@ module.exports = (router) => {
     db('Users').select().then(rows => {
       res.json({ data: rows })
     }).catch(err => {
-      console.log(err)
-      res.status(500).json({ err: err })
+      console.log(err, err.message)
+      res.status(500).json({ err: err, message: err.message })
     })
   })
 
