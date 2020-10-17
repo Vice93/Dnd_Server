@@ -1,3 +1,4 @@
+const appEnv = process.env.APP_ENV || 'dev'
 // Initialize Knex using a pool
 const knex = require('knex')({
   client: 'pg',
@@ -6,7 +7,8 @@ const knex = require('knex')({
     port: process.env.DB_PORT,
     database: process.env.DATABASE,
     user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD
+    password: process.env.DB_PASSWORD,
+    ssl: appEnv === 'prod'
   },
   pool: { 
     min: 0, 
