@@ -30,7 +30,7 @@ const login = (username, password, callback) => {
         let hashedPassword = rows[0].Password
         comparePassword(password, hashedPassword, (success) => {
           if(success)
-            callback({ success: true, message: '', user: new User(rows[0]) })
+            callback({ success: true, message: '', user: /*new User(rows[0])*/ {test: "test"} })
           else
             callback({ success: false, message: 'Invalid username or password' })
         })
