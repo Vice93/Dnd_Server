@@ -29,7 +29,7 @@ module.exports = (router) => {
       
       lib.login(body.username, body.password, (result) => {
         if(result.success)
-          return res.json({ success: true, message: 'OK - Success', data: { /*user: result.user.getUser(), token: result.user.getToken()*/ } })
+          return res.json({ success: true, message: 'OK - Success', data: { user: result.user /*user: result.user.getUser(), token: result.user.getToken()*/ } })
 
         return res.json({ success: false, message: result.message, err: result.err, data: { user: null }, extras: JSON.stringify({username: body.username, pw: body.password}) })
       })
