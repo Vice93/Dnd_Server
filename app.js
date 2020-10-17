@@ -12,13 +12,9 @@ const app = express()
 /**
  * Enable cors if the environment is development
  */
-if (appEnv === 'dev') {
-  console.log(`Enabled cors because environment is ${appEnv}`)
-  app.use(cors({
-    origin: [`http://localhost:3002`] //your react url:port
-  }))
-}
-
+app.use(cors({
+  origin: [process.env.REACT_URL]
+}))
 /** 
 * Use bodyparser to parse the requests/responses we send. We are mostly using json, but some formdata is sent as urlencoded so we support both these. 
 * There are also various more, but we wont be using those 
