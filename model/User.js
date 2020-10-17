@@ -27,7 +27,7 @@ module.exports = class User {
   }
 
   getToken() {
-    if(!this.Username) return "no username set"
+    return "test"
 
     return middleware.generateToken(this.Username)
   }
