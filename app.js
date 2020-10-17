@@ -14,8 +14,8 @@ const app = express()
 */
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-console.log(process.env.NODE_ENV) // production??
-app.use(logger(process.env.NODE_ENV || 'dev'))
+console.log(process.env.APP_ENV) // production??
+app.use(logger(process.env.APP_ENV || 'dev'))
 /**
  * Setup API routes
  */

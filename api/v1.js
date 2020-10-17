@@ -4,9 +4,9 @@ module.exports = (router) => {
 
   router.get('/', (req, res) => {
     db.query('select * from test').then(res => {
-      res.status(200).json({ testdata: res })
+      res.status(200).json({ data: res })
     }).catch(err => {
-      res.status(200).json({ testdata: err })
+      res.status(200).json({ err: err })
     })
   })
 
