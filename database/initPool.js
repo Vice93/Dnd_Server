@@ -14,4 +14,18 @@ const knex = require('knex')({
   }
 })
 
+
+knex.on('query', (res) => {
+  console.log('query: ', res)
+})
+knex.on('query-success', (res) => {
+  console.log('query-success: ', res)
+})
+knex.on('query-error', (res) => {
+  console.log('query-error: ', res)
+})
+knex.on('error', (res) => {
+  console.log('error: ', res)
+})
+
 module.exports = knex
