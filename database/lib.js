@@ -37,7 +37,7 @@ const login = (username, password, callback) => {
       }
     }).catch((ex) =>  {
       console.log(ex)
-      callback({ success: false, message: 'An unhandeled exception occured' + ex.message, err: ex})
+      callback({ success: false, message: 'An unhandeled exception occured'})
     })
 }
 
