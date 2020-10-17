@@ -10,7 +10,7 @@ const pool = new Pool({
 
 pool.on('error', (err, client) => {
   console.error('Unexpected error on idle client', err)
-  //process.exit(-1)
+  process.exit(-1)
 })
 
 const query = (q) => {
@@ -22,11 +22,11 @@ const query = (q) => {
         .then((res) => {
           console.log("returning", res.rows)
           client.release()
-          return res.rows
+          return new Promise.resolve(res.rows)
         }).catch(err => {
           client.release()
           console.log("Error:", err)
-          return undefined
+          return new Promise.resolve(undefined)
         })
     })
 }
