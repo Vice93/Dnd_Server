@@ -26,7 +26,7 @@ const query = (q) => {
         }).catch(err => {
           client.release()
           console.log("Error:", err)
-          return new Promise.resolve(undefined)
+          return new Promise.reject(err)
         })
     })
 }
