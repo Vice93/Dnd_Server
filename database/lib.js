@@ -30,7 +30,7 @@ const login = (username, password, callback) => {
         let hashedPassword = rows[0].Password
         comparePassword(password, hashedPassword, (success) => {
           if(success)
-            callback({ success: true, message: '', user: rows[0] })
+            callback({ success: true, message: '', user: trystuff(rows[0]) })
           else
             callback({ success: false, message: 'Invalid username or password' })
         })
@@ -39,6 +39,18 @@ const login = (username, password, callback) => {
       console.log(ex)
       callback({ success: false, message: 'An unhandeled exception occured' + ex.message, err: ex})
     })
+}
+
+const trystuff = (userobj) => {
+  try {
+    try {
+      return new User(JSON.stringify(userobj))
+    } catch (error) {
+      return new User(userobj)
+    }
+  } catch (e) {
+    return userobj
+  }
 }
 
 
