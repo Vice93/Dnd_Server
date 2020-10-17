@@ -1,6 +1,6 @@
 // Initialize Knex using a pool
 const knex = require('knex')({
-  client: 'pg',
+  client: 'mssql',
   connection: {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
