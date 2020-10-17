@@ -1,6 +1,5 @@
 const middleware = require('../api/middleware.js')
 
-
 module.exports = class User {
 
   constructor({Id, Username, Email, Password, CreatedDate, UpdatedDate}) {
@@ -27,8 +26,6 @@ module.exports = class User {
   }
 
   getToken() {
-    return "test"
-
     return middleware.generateToken(this.Username)
   }
 }
