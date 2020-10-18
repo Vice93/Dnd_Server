@@ -12,6 +12,7 @@ module.exports = (router) => {
   })
 
   require('./users')(router)
+  require('./roll')(router)
 
   return router
 }
