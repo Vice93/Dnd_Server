@@ -52,7 +52,7 @@ module.exports = (router) => {
     if(!rollsArr || rollsArr.length <= 0)
       return res.status(400).json({ success: false, message: 'Missing body' })
 
-    const err = rollsArr.forEach(roll => {
+    const err = rollsArr.map(roll => {
       return checkParams(roll)
     })
 
