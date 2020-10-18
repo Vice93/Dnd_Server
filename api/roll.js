@@ -1,25 +1,21 @@
 const roller = require('../service/diceroller')
 
-const setMinToOne = (number) =>  {
-  if(number <= 0) return 1
-
-  return number
-}
-
 const checkParams = (context) => {
   const invalidParams = []
   for (let prop in context) {
     const value = context[prop]
-    console.log(`${prop}: ${context[prop]}`)
     switch(prop) {
       case 'dCount':
       case 'sCount':
-        if (!value || isNaN(value)) 
+        if (!value || isNaN(value) || value <= 0) 
           invalidParams.push(prop)
         break
       case 'mod':
-      case 'keep':
         if(value && isNaN(value))
+          invalidParams.push(prop)
+        break
+      case 'keep':
+        if(value && (isNaN(value) || value <= 0))
           invalidParams.push(prop)
         break
     }
